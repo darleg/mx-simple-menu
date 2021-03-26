@@ -1,13 +1,10 @@
 #include "mbed.h"
-#include "simpleMenu.h"
+#include "console.h"
+#include "Thread.h"
 
-
-static BufferedSerial az(TX, RX);
-
-FileHandle *mbed::mbed_override_console(int fd)
-{
-    return &az;
-}
+#define delay200ms     200ms
+#define delay500ms     500ms
+#define delay800ms     800ms
 
 void systemMenu(); 
 
@@ -26,6 +23,16 @@ void helpMe(){
 	systemMenu();	 
 }
 void getVersion() {
+    int anyNum;
+    clrscn;
+    printf(
+        "Mbed OS version %d.%d.%d\n",
+        MBED_MAJOR_VERSION,
+        MBED_MINOR_VERSION,
+        MBED_PATCH_VERSION
+    );
+    printf("input 1 to 9 and hit enter");
+    scanf("%d", &anyNum);
     systemMenu();	
 }
 void reBoot() {
