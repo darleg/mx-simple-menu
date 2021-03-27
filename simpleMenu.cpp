@@ -36,8 +36,12 @@ void getVersion() {
     systemMenu();	
 }
 void reBoot() {
-	printf("\n Shutting down under 30 seconds... ");
-	systemMenu();	
+	int anyN ;
+	printf("\n input 1 to 9 and enter to reboot");
+    scanf("%d", &anyN);
+    NVIC_SystemReset();
+    // Or
+    //system_reset();
 }
 void systemInfo(){ 
 	systemMenu();	
